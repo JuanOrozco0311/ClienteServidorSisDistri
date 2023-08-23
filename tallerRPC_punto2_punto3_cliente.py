@@ -29,8 +29,12 @@ if login == 'Correcto':
         file.write(item)
     file.close()
     print(f'\nLa lista original es:\n{l2}')
-    invert_list = s.invList('items.txt')
-    file_open = open(invert_list, 'r')
+    with open('items.txt', 'rb') as file:
+        file_content = file.read()
+    inverted_list_file = s.invList(file_content)
+    with open('items.txt', 'wb') as file:
+        file.write(inverted_list_file.data)
+    file_open = open('items.txt', 'r')
     invert_result = file_open.readlines()
     file_open.close()
     inverted_list = []

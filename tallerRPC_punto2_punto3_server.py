@@ -1,6 +1,7 @@
 #Por Juan Alejandro Orozco y Juan Camilo Palleja
 #PUNTO 2 y PUNTO 3
 from xmlrpc.server import SimpleXMLRPCServer
+from xmlrpc.client import Binary
 class login_lista:
     __saved_user = 'falcao'
     __saved_password = 'rayo2023'
@@ -13,15 +14,20 @@ class login_lista:
         else:
             return "Usuario o contraseña incorrectos"
     
-    def invList(self, file):
-        fileOpen = open(file, 'r')
-        container = fileOpen.readlines()
-        fileOpen.close()
-        fileOpen = open(file, 'w')
-        for item in container[::-1]:
-            fileOpen.write(item)
-        fileOpen.close()
-        return file
+    def invList(self, fileReceive):
+        with open('read.txt','wb') as file:
+            file.write(fileReceive.data)
+            
+        with open('read.txt', 'r') as file:
+            container = file.readlines()
+            inverted_content = container[::-1]
+            
+        with open('read.txt', 'w') as file:
+            for x in inverted_content:
+                file.write(x)
+        
+        with open('read.txt', 'rb') as file:
+            return Binary(file.read())
     
     def mostFrequent(self, file):
         fileOpen = open(file, 'r')
