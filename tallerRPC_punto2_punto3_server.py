@@ -12,7 +12,23 @@ class login_lista:
             return "BIEN"
         else:
             return "Usuario o contraseña incorrectos"
-        
+    
+    def invList(self, file):
+        fileOpen = open(file, 'r')
+        container = fileOpen.readlines()
+        fileOpen.close()
+        fileOpen = open(file, 'w')
+        for item in container[::-1]:
+            fileOpen.write(item)
+        fileOpen.close()
+        fileOpen = open(file, 'r')
+        return fileOpen.read()
+    
+    def mostFrequent(self, file):
+        fileOpen = open(file, 'r')
+        container = fileOpen.readlines()
+        result = max(set(container), key = container.count)
+        return result
         
 server2 = SimpleXMLRPCServer(("localhost", 8002))
 server2.register_instance((login_lista()))
