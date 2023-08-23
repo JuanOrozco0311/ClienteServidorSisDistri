@@ -21,8 +21,7 @@ class login_lista:
         for item in container[::-1]:
             fileOpen.write(item)
         fileOpen.close()
-        fileOpen = open(file, 'r')
-        return fileOpen.read()
+        return file
     
     def mostFrequent(self, file):
         fileOpen = open(file, 'r')
