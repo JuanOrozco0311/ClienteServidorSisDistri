@@ -4,7 +4,7 @@ import xmlrpc.client
 
 s = xmlrpc.client.ServerProxy('http://localhost:8002')
 
-user = str(input('Sistema de autentificaion:\n\nIngrese su usuario: '))
+user = str(input('Sistema de Autenticación:\n\nIngrese su usuario: '))
 password = str(input('Ingrese su contraseña: '))
 login = s.login((user, password))
 if login == 'Correcto':
