@@ -9,7 +9,7 @@ class login_lista:
         user = information[0]
         password = information[1]
         if user == self.__saved_user and password == self.__saved_password:
-            return "BIEN"
+            return "Correcto"
         else:
             return "Usuario o contraseña incorrectos"
     
