@@ -29,11 +29,12 @@ class login_lista:
         with open('read.txt', 'rb') as file:
             return Binary(file.read())
     
-    def mostFrequent(self, file):
-        fileOpen = open(file, 'r')
-        container = fileOpen.readlines()
-        result = max(set(container), key = container.count)
-        return result
+    def mostFrequent(self, fileReceive):
+        with open('read.txt','wb') as file:
+            file.write(fileReceive.data)
+        with open('read.txt', 'r') as file:
+            container = file.readlines()
+            return max(set(container), key = container.count)
         
 server2 = SimpleXMLRPCServer(("localhost", 8002))
 server2.register_instance((login_lista()))

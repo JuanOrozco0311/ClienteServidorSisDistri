@@ -42,7 +42,7 @@ if login == 'Correcto':
         inverted_list.append(int(value.split('\n')[0]))
 
     print(f'\nLa lista invertida es:\n{inverted_list}\n')
-    print('El elemento de la lista que mas se repite es:',s.mostFrequent('items.txt'))
+    print('El elemento de la lista que mas se repite es:',s.mostFrequent(file_content))
 else:
     print(login)
 
